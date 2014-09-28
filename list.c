@@ -1,3 +1,12 @@
+/*
+ * Sam Daulton
+ * 26 Sept 2014
+ * COSC 301 
+ * Project 1
+ */
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"

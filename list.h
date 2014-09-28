@@ -1,3 +1,12 @@
+/*
+ * Sam Daulton
+ * 26 Sept 2014
+ * COSC 301 
+ * Project 1
+ */
+
+
+
 #ifndef __LIST_H__
 #define __LIST_H__
 
