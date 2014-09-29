@@ -12,6 +12,9 @@
 #include <errno.h>
 #include <stdbool.h>
 #include "list.h"
+#include <sys/time.h>
+#include <sys/resource.h>
+
 
 /*
  * Modified version of tokenify from Lab02.  Takes a string as a parameter and
@@ -97,8 +100,18 @@ void process_data(FILE *input_file) {
     list_sort(&list);
     list_print(list);
     list_clear(list);
-
-
+    
+    // now some usage time statistics
+    struct rusage usage_time;
+    if (getrusage(RUSAGE_SELF, &usage_time) != -1) {
+        struct timeval sys_time = usage_time.ru_stime;
+        struct timeval user_time = usage_time.ru_utime;
+        printf("System Time: %lf\n", sys_time.tv_sec + sys_time.tv_usec * .0000001);
+        printf("User Time: %lf\n", user_time.tv_sec+ user_time.tv_usec * .0000001);
+    } else  {
+        perror("getrusage");
+        exit(1);
+    }
 }
 
 
